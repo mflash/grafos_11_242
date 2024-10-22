@@ -14,11 +14,32 @@ class UndirectedCycle:
                     break
 
     def __containsCycle(self, v):
+        print("estou em", v)
+        self.marked[v] = True
+        for u in self.g.getAdj(v):
+            e = u + "-" + v
+            print("e:",e)
+            if u not in self.marked:
+                self.edges.add(e)
+                res = self.__containsCycle(u)
+                if res:
+                    return res
+            elif v + "-" + u not in self.edges:
+                return True
         return False
 
 if __name__ == "__main__":
 
-    g = Graph("exemplos/tinyG.txt")
+    # g = Graph("exemplos/tinyG.txt")
+    g = Graph();
+    g.addEdge("A", "B")
+    g.addEdge("B", "C")
+    g.addEdge("C", "D")
+    # g.addEdge("D", "A")
+    g.addEdge("C", "E")
+    g.addEdge("F", "G")
+    g.addEdge("G", "H")
+    g.addEdge("H", "F")
 
     uc = UndirectedCycle(g)
 
