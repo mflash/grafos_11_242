@@ -19,7 +19,8 @@ public class CicloNaoDirigido {
                 temCiclo = containsCycle(g, v);
                 if (temCiclo)
                     return;
-            }
+            } else
+                System.out.println("Já visitado: " + v);
         }
     }
 
