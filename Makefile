@@ -35,7 +35,17 @@ apptopo = apptopo
 apptopo_src = apptopo.cpp graph.cpp digraph.cpp topological.cpp
 apptopo_obj = $(apptopo_src:.cpp=.o)
 
-all: appgraph appdigraph appdfs appbfs appucycle appdcycle apptopo
+# classe UnionFind
+appufind = appufind
+appufind_src = appunionfind.cpp unionfind.cpp 
+appufind_obj = $(appufind_src:.cpp=.o)
+
+# classe EdgeWeightedGraph
+appewgraph = appewgraph
+appewgraph_src = appewgraph.cpp edgeweightedgraph.cpp
+appewgraph_obj = $(appewgraph_src:.cpp=.o)
+
+all: appgraph appdigraph appdfs appbfs appucycle appdcycle apptopo appewgraph appufind
 
 $(appgraph): $(appgraph_obj)
 	g++ $(CPPFLAGS) $(appgraph_obj) -o $@
@@ -58,7 +68,13 @@ $(appdcycle): $(appdcycle_obj)
 $(apptopo): $(apptopo_obj)
 	g++ $(CPPFLAGS) $(apptopo_obj) -o $@
 
+$(appewgraph): $(appewgraph_obj)
+	g++ $(CPPFLAGS) $(appewgraph_obj) -o $@
+
+$(appufind): $(appufind_obj)
+	g++ $(CPPFLAGS) $(appufind_obj) -o $@
+
 clean:
-	-@ rm -f $(appgraph_obj) $(appgraph) $(appdgraph_obj) $(appdgraph) ${appdfs} ${appdfs_obj} ${appbfs} ${appbfs_obj} \
-		 $(appucycle_obj) $(appucycle) $(appdcycle_obj) $(appdcycle)
+	-@ rm -f $(appgraph_obj) $(appgraph) $(appdgraph_obj) $(appdgraph) $(appdfs) $(appdfs_obj) $(appbfs) $(appbfs_obj) \
+		 $(appucycle_obj) $(appucycle) $(appdcycle_obj) $(appdcycle) $(appewgraph) $(appewgraph_obj) $(appufind) $(appufind_obj)
 	   	
