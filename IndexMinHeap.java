@@ -7,7 +7,11 @@ public class IndexMinHeap<Key, Value extends Comparable<Value>> {
 
   // Armazena um valor e a posição da chave correspondente no vetor
   private class ValuePos {
-    public ValuePos(Value v, int p) { this.value = v; this.pos =p; }
+    public ValuePos(Value v, int p) {
+      this.value = v;
+      this.pos = p;
+    }
+
     public Value value;
     public int pos;
   }
@@ -47,7 +51,7 @@ public class IndexMinHeap<Key, Value extends Comparable<Value>> {
     dic = new HashMap<>();
     for (int i = 0; i < n; i++) {
       pq[i + 1] = keys[i];
-      dic.put(keys[i], new ValuePos(values[i],i+1));
+      dic.put(keys[i], new ValuePos(values[i], i + 1));
     }
     for (int k = n / 2; k >= 1; k--)
       sink(k);
@@ -109,7 +113,7 @@ public class IndexMinHeap<Key, Value extends Comparable<Value>> {
 
     // adiciona x e faz swim para manter propriedade de ordem parcial
     pq[++n] = x;
-    dic.put(x,new ValuePos(v, n));
+    dic.put(x, new ValuePos(v, n));
     swim(n);
   }
 
@@ -139,12 +143,13 @@ public class IndexMinHeap<Key, Value extends Comparable<Value>> {
   /**
    * Diminui o valor associado à chave especificada
    *
-   * @param  k a chave cujo valor deve ser reduzido
-   * @param  v o novo valor a ser associado à chave
+   * @param k a chave cujo valor deve ser reduzido
+   * @param v o novo valor a ser associado à chave
    * @throws NoSuchElementException chave inexistente
-  */
+   */
   public void decreaseValue(Key k, Value v) {
-    if (!contains(k)) throw new NoSuchElementException("Chave não existe");
+    if (!contains(k))
+      throw new NoSuchElementException("Chave não existe");
     ValuePos vp = dic.get(k);
     vp.value = v;
     swim(vp.pos);
@@ -179,8 +184,8 @@ public class IndexMinHeap<Key, Value extends Comparable<Value>> {
   private boolean greater(int i, int j) {
     ValuePos vp1 = dic.get(pq[i]);
     ValuePos vp2 = dic.get(pq[j]);
-    return vp1.value.compareTo(vp2.value) >  0;
-    //return ((Comparable<Key>) pq[i]).compareTo(pq[j]) > 0;
+    return vp1.value.compareTo(vp2.value) > 0;
+    // return ((Comparable<Key>) pq[i]).compareTo(pq[j]) > 0;
   }
 
   private void exch(int i, int j) {
