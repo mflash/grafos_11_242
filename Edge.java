@@ -11,6 +11,11 @@ public class Edge implements Comparable<Edge> {
     this.color = "";
   }
 
+  public Edge(String v, String w) {
+    this(v, w, 0);
+    this.weight = StdRandom.uniformInt(1, 21);
+  }
+
   public String getV() {
     return v;
   }

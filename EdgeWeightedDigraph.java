@@ -11,6 +11,12 @@ public class EdgeWeightedDigraph extends EdgeWeightedGraph {
   @Override
   public void addEdge(String v, String w, double weight) {
     Edge e = new Edge(v, w, weight);
+    addEdge(e);
+  }
+
+  public void addEdge(Edge e) {
+    String v = e.getV();
+    String w = e.getV();
     addToList(v, e);
     if (!vertices.contains(v)) {
       vertices.add(v);

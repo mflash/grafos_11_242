@@ -1,0 +1,12 @@
+digraph {
+rankdir = LR;
+node [shape = circle];
+"A" -> "B"
+"A" -> "D"
+"B" -> "C"
+"C" -> "D"
+"C" -> "E"
+"F" -> "G"
+"G" -> "H"
+"H" -> "F"
+}
