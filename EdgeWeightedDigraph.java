@@ -16,7 +16,7 @@ public class EdgeWeightedDigraph extends EdgeWeightedGraph {
 
   public void addEdge(Edge e) {
     String v = e.getV();
-    String w = e.getV();
+    String w = e.getW();
     addToList(v, e);
     if (!vertices.contains(v)) {
       vertices.add(v);
@@ -26,7 +26,6 @@ public class EdgeWeightedDigraph extends EdgeWeightedGraph {
       vertices.add(w);
       totalVertices++;
     }
-    totalEdges += 2;
     totalEdges++;
   }
 
