@@ -2,6 +2,7 @@ class EdgeWeightedGraph:
     def __init__(self, *args):
         self.graph = {}
         self.vertices = set()
+        self.totalEdges = 0
         if len(args) == 1:
             self.__readFromFile(args[0])
 
@@ -9,12 +10,16 @@ class EdgeWeightedGraph:
         e = [v, w, weight]
         self.addToList(v, e)
         self.addToList(w, e)
+        self.totalEdges += 2
 
     def getAdj(self, v):
         return self.graph[v] if v in self.graph else []
 
     def getVerts(self):
         return self.vertices
+    
+    def getTotalEdges(self):
+        return self.totalEdges
 
     def toDot(self):
         edges = set()
@@ -53,7 +58,7 @@ if __name__ == "__main__":
     #    g.addEdge("0", "2")
     #    g.addEdge("2", "1")
 
-    g = EdgeWeightedGraph("tinyEWG.txt")
+    g = EdgeWeightedGraph("exemplos/tinyEWG.txt")
 
     for v in g.getVerts():
         print(f"{v}: ", end="")

@@ -5,6 +5,7 @@ class EdgeWeightedDigraph(EdgeWeightedGraph):
     def addEdge(self, v, w, weight):
         e = [v, w, weight]
         super().addToList(v, e)
+        self.totalEdges += 1
 
     def toDot(self):
         NEWLINE = '\n'
@@ -13,7 +14,7 @@ class EdgeWeightedDigraph(EdgeWeightedGraph):
         sb += "node [shape = circle];" + NEWLINE
         for v in sorted(self.getVerts()):
             for e in self.getAdj(v):
-                sb += f'{e[0]} -- {e[1]} [label="{e[2]}"]' + NEWLINE
+                sb += f'{e[0]} -> {e[1]} [label="{e[2]}"]' + NEWLINE
         sb += "}" + NEWLINE
         return sb
 
